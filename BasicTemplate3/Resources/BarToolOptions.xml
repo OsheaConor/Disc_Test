@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<customUI xmlns="http://schemas.spaceclaim.com/customui">
+  <panel command="BasicTemplate3.BarTool" label="Tool" modeLabel="TextBox">
+    <group id="BasicTemplate3.BarToolGuide" label="Tool Guides" optionsType="toolGuide">
+      <button id="BasicTemplate3.TickMark" command="BasicTemplate3.TickMark"/>
+    </group>
+    <group id="BasicTemplate3.BarTool" label="Textbox Options" optionsType="primary">
+      <container id="BasicTemplate3.BarToolContainer" layoutOrientation="vertical">
+        <textBox id="BasicTemplate3.CustomObjetMagnitude" command="BasicTemplate3.CustomObjectMagnitude" width="80" label="Double only:" />
+      </container>
+    </group>
+  </panel>
+</customUI>

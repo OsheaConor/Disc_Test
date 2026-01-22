@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<AddIns>
+  <AddIn name="BasicTemplate3"
+		   description="BasicTemplate3 Add-in for Discovery"
+		   assembly="BasicTemplate3.dll"
+		   typename="BasicTemplate3.BasicTemplate3"
+		   host="SameAppDomain" />
+</AddIns>

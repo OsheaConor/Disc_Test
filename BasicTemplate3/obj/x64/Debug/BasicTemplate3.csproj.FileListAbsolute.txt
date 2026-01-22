@@ -1,0 +1,22 @@
+C:\ProgramData\Discovery\AddIns\BasicTemplate3\BasicTemplate3.manifest.xml
+C:\ProgramData\Discovery\AddIns\BasicTemplate3\BasicTemplate3.dll
+C:\ProgramData\Discovery\AddIns\BasicTemplate3\BasicTemplate3.pdb
+C:\Users\osheaco\Downloads\DISCOVERY_SAMPLE_ADDINS_2025R2_WINX64\BasicTemplate3\BasicTemplate3\obj\x64\Debug\BasicTemplate3.csproj.AssemblyReference.cache
+C:\Users\osheaco\Downloads\DISCOVERY_SAMPLE_ADDINS_2025R2_WINX64\BasicTemplate3\BasicTemplate3\obj\x64\Debug\BasicTemplate3.Properties.Resources.resources
+C:\Users\osheaco\Downloads\DISCOVERY_SAMPLE_ADDINS_2025R2_WINX64\BasicTemplate3\BasicTemplate3\obj\x64\Debug\BasicTemplate3.csproj.GenerateResource.cache
+C:\Users\osheaco\Downloads\DISCOVERY_SAMPLE_ADDINS_2025R2_WINX64\BasicTemplate3\BasicTemplate3\obj\x64\Debug\BasicTemplate3.csproj.CoreCompileInputs.cache
+C:\Users\osheaco\Downloads\DISCOVERY_SAMPLE_ADDINS_2025R2_WINX64\BasicTemplate3\BasicTemplate3\obj\x64\Debug\BasicTem.2E0291FA.Up2Date
+C:\Users\osheaco\Downloads\DISCOVERY_SAMPLE_ADDINS_2025R2_WINX64\BasicTemplate3\BasicTemplate3\obj\x64\Debug\BasicTemplate3.dll
+C:\Users\osheaco\Downloads\DISCOVERY_SAMPLE_ADDINS_2025R2_WINX64\BasicTemplate3\BasicTemplate3\obj\x64\Debug\BasicTemplate3.pdb
+C:\Program Files\ANSYS Inc\v252\Discovery\Addins\BasicTemplate3.manifest.xml
+C:\Program Files\ANSYS Inc\v252\Discovery\Addins\BasicTemplate3.dll
+C:\Program Files\ANSYS Inc\v252\Discovery\Addins\BasicTemplate3.pdb
+C:\Program Files\ANSYS Inc\v252\Discovery\Addins\EXP\BasicTemplate3.manifest.xml
+C:\Program Files\ANSYS Inc\v252\Discovery\Addins\EXP\BasicTemplate3.dll
+C:\Program Files\ANSYS Inc\v252\Discovery\Addins\EXP\BasicTemplate3.pdb
+C:\Users\osheaco\c_git\Disc_Test\BasicTemplate3\obj\x64\Debug\BasicTemplate3.csproj.AssemblyReference.cache
+C:\Users\osheaco\c_git\Disc_Test\BasicTemplate3\obj\x64\Debug\BasicTemplate3.Properties.Resources.resources
+C:\Users\osheaco\c_git\Disc_Test\BasicTemplate3\obj\x64\Debug\BasicTemplate3.csproj.GenerateResource.cache
+C:\Users\osheaco\c_git\Disc_Test\BasicTemplate3\obj\x64\Debug\BasicTemplate3.csproj.CoreCompileInputs.cache
+C:\Users\osheaco\c_git\Disc_Test\BasicTemplate3\obj\x64\Debug\BasicTemplate3.dll
+C:\Users\osheaco\c_git\Disc_Test\BasicTemplate3\obj\x64\Debug\BasicTemplate3.pdb

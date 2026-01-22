@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<customUI xmlns="http://schemas.spaceclaim.com/customui">
+    <panel command="BasicTemplate3.SimulationTool" label="Tool" modeLabel="TextBoxMaybe">
+        <group id="BasicTemplate3.SimulationToolGuide" label="Tool Guides" optionsType="toolGuide">
+			<button id="BasicTemplate3.BodySelector" command="BasicTemplate3.BodySelector"/>
+            <button id="BasicTemplate3.AcceptOrder" command="BasicTemplate3.AcceptOrder"/>
+        </group>
+        <group id="BasicTemplate3.SimulationTool" label="Textbox Options" optionsType="primary">
+            <container id="BasicTemplate3.SimulationToolContainer" layoutOrientation="vertical">
+                <textBox id="BasicTemplate3.CuttingOrder" command="BasicTemplate3.CuttingOrder" width="80" label="Positive integer only:" />
+            </container>
+        </group>
+    </panel>
+</customUI>

@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<customUI xmlns="http://schemas.spaceclaim.com/customui">
+  <panel command="BasicTemplate3.FooTool" label="Tool" modeLabel="TextBox">
+    <group id="BasicTemplate3.FooTool" label="Textbox Options" optionsType="primary">
+      <container id="BasicTemplate3.FooToolContainer" layoutOrientation="vertical">
+        <checkBox id="BasicTemplate3.CheckBox" label="Unitless" command="BasicTemplate3.CheckBox"/>
+        <textBox id="BasicTemplate3.TextBoxDouble" command="BasicTemplate3.TextBoxDouble" width="80" label="Double only:" />
+        <textBox id="BasicTemplate3.TextBoxQuantity" command="BasicTemplate3.TextBoxQuantity" width="80" label="Quantity :" quantityType="temperature" />
+      </container>
+    </group>
+  </panel>
+</customUI>
