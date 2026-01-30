@@ -83,8 +83,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BasicTemplate3.cs" />
-    <Compile Include="BarTool.cs" />
-    <Compile Include="FooTool.cs" />
     <Compile Include="CreateBlock.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -97,8 +95,8 @@
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -106,11 +104,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\SimToolOptions.xml" />
     <None Include="Resources\CreateBlock.png" />
-    <None Include="Resources\button1.png" />
-    <Content Include="Resources\BarToolOptions.xml" />
-    <None Include="Resources\button2.PNG" />
     <Content Include="Resources\FooToolOptions.xml" />
     <None Include="Resources\OK_32px.png" />
     <Content Include="Resources\Ribbon.xml" />

@@ -4,22 +4,16 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://schemas.spaceclaim.com/customui http://schemas.spaceclaim.com/customui/SpaceClaimCustomUI.V20.xsd">
 
-  <ribbon>
-    <tabs>
-      <tab id="Discovery BasicTemplate3" command="BasicTemplate3.RibbonTab">
-        <group id ="Geometry" command="BasicTemplate3.Geometry" label="Geometry">
-          <button id="BasicTemplate3.CreateBlock" size="large" command="BasicTemplate3.CreateBlock"/>
-        </group>
-        <group id ="Tool" command="BasicTemplate3.Tool" label="Tool">
-          <button id="BasicTemplate3.button1" size="large" command="BasicTemplate3.FooTool"/>
-        </group>
-        <group id ="Object" command="BasicTemplate3.Object" label="Object">
-          <button id="BasicTemplate3.button2" size="large" command="BasicTemplate3.BarTool"/>
-        </group>
-		  <group id ="Simulation" command="BasicTemplate3.Sim" label="Simulation">
-			  <button id="BasicTemplate3.button2" size="large" command="BasicTemplate3.SimulationTool"/>
-		  </group>
-      </tab>
-    </tabs>
-  </ribbon>
+	<ribbon>
+		<tabs>
+			<tab id="Discovery BasicTemplate3" command="BasicTemplate3.RibbonTab">
+				<group id ="Geometry" command="BasicTemplate3.Geometry" label="Geometry">
+					<button id="BasicTemplate3.CreateBlock" size="large" command="BasicTemplate3.CreateBlock"/>
+				</group>
+				<group id ="Simulation" command="BasicTemplate3.Sim" label="Simulation">
+					<button id="BasicTemplate3.button2" size="large" command="BasicTemplate3.AcceptOrder"/>
+				</group>
+			</tab>
+		</tabs>
+	</ribbon>
 </customUI>

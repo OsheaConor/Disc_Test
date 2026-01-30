@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\osheaco\\c_gitstuff\\Disc_Test\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D3F846FF-C1BF-4673-9613-DFB884B73782}|BasicTemplate3\\BasicTemplate3.csproj|c:\\users\\osheaco\\c_gitstuff\\disc_test\\basictemplate3\\simulationtool.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{D3F846FF-C1BF-4673-9613-DFB884B73782}|BasicTemplate3\\BasicTemplate3.csproj|C:\\Users\\osheaco\\c_gitstuff\\Disc_Test\\basictemplate3\\simulationtool.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D3F846FF-C1BF-4673-9613-DFB884B73782}|BasicTemplate3\\BasicTemplate3.csproj|solutionrelative:basictemplate3\\simulationtool.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D3F846FF-C1BF-4673-9613-DFB884B73782}|BasicTemplate3\\BasicTemplate3.csproj|C:\\Users\\osheaco\\c_gitstuff\\Disc_Test\\basictemplate3\\footool.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D3F846FF-C1BF-4673-9613-DFB884B73782}|BasicTemplate3\\BasicTemplate3.csproj|solutionrelative:basictemplate3\\footool.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D3F846FF-C1BF-4673-9613-DFB884B73782}|BasicTemplate3\\BasicTemplate3.csproj|C:\\Users\\osheaco\\c_gitstuff\\Disc_Test\\basictemplate3\\basictemplate3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D3F846FF-C1BF-4673-9613-DFB884B73782}|BasicTemplate3\\BasicTemplate3.csproj|solutionrelative:basictemplate3\\basictemplate3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3F846FF-C1BF-4673-9613-DFB884B73782}|BasicTemplate3\\BasicTemplate3.csproj|C:\\Users\\osheaco\\c_gitstuff\\Disc_Test\\basictemplate3\\properties\\resources.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D3F846FF-C1BF-4673-9613-DFB884B73782}|BasicTemplate3\\BasicTemplate3.csproj|solutionrelative:basictemplate3\\properties\\resources.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,19 +22,33 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "FooTool.cs",
-              "DocumentMoniker": "C:\\Users\\osheaco\\c_gitstuff\\Disc_Test\\BasicTemplate3\\FooTool.cs",
-              "RelativeDocumentMoniker": "BasicTemplate3\\FooTool.cs",
-              "ToolTip": "C:\\Users\\osheaco\\c_gitstuff\\Disc_Test\\BasicTemplate3\\FooTool.cs",
-              "RelativeToolTip": "BasicTemplate3\\FooTool.cs",
-              "ViewState": "AgIAAGgAAAAAAAAAAAAcwG8AAAAAAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "Resources.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\osheaco\\c_gitstuff\\Disc_Test\\BasicTemplate3\\Properties\\Resources.Designer.cs",
+              "RelativeDocumentMoniker": "BasicTemplate3\\Properties\\Resources.Designer.cs",
+              "ToolTip": "C:\\Users\\osheaco\\c_gitstuff\\Disc_Test\\BasicTemplate3\\Properties\\Resources.Designer.cs",
+              "RelativeToolTip": "BasicTemplate3\\Properties\\Resources.Designer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-27T11:54:38.14Z"
+              "WhenOpened": "2026-01-30T07:44:09.237Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "BasicTemplate3.cs",
+              "DocumentMoniker": "C:\\Users\\osheaco\\c_gitstuff\\Disc_Test\\BasicTemplate3\\BasicTemplate3.cs",
+              "RelativeDocumentMoniker": "BasicTemplate3\\BasicTemplate3.cs",
+              "ToolTip": "C:\\Users\\osheaco\\c_gitstuff\\Disc_Test\\BasicTemplate3\\BasicTemplate3.cs",
+              "RelativeToolTip": "BasicTemplate3\\BasicTemplate3.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-30T07:06:49.144Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -40,7 +58,7 @@
               "RelativeDocumentMoniker": "BasicTemplate3\\SimulationTool.cs",
               "ToolTip": "C:\\Users\\osheaco\\c_gitstuff\\Disc_Test\\BasicTemplate3\\SimulationTool.cs",
               "RelativeToolTip": "BasicTemplate3\\SimulationTool.cs",
-              "ViewState": "AgIAAOIAAAAAAAAAAAAgwOkAAAAvAAAAAAAAAA==",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAuwKcAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-22T12:04:14.422Z",
               "EditorCaption": ""
