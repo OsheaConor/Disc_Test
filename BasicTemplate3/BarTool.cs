@@ -1,16 +1,16 @@
 ﻿// Copyright (C) ANSYS.  All Rights Reserved.
 
-using Ansys.Discovery.Api.V241.Customization.Wrapping;
-using Ansys.Discovery.Api.V241.Physics.Conditions;
-using Ansys.Discovery.Api.V241.Solution;
-using Ansys.Discovery.Api.V241.Units;
+using Ansys.Discovery.Api.V252.Customization.Wrapping;
+using Ansys.Discovery.Api.V252.Physics.Conditions;
+using Ansys.Discovery.Api.V252.Solution;
+using Ansys.Discovery.Api.V252.Units;
 using BasicTemplate3.Properties;
-using SpaceClaim.Api.V241;
-using SpaceClaim.Api.V241.Display;
-using SpaceClaim.Api.V241.Extensibility;
-using SpaceClaim.Api.V241.Geometry;
-using SpaceClaim.Api.V241.Modeler;
-using SpaceClaim.Api.V241.Unsupported.RuledCutting;
+using SpaceClaim.Api.V252;
+using SpaceClaim.Api.V252.Display;
+using SpaceClaim.Api.V252.Extensibility;
+using SpaceClaim.Api.V252.Geometry;
+using SpaceClaim.Api.V252.Modeler;
+using SpaceClaim.Api.V252.Unsupported.RuledCutting;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;

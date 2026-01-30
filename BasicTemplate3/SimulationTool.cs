@@ -1,20 +1,21 @@
-﻿using Ansys.Discovery.Api.V241.Application;
-using Ansys.Discovery.Api.V241.Customization.Wrapping;
-using Ansys.Discovery.Api.V241.Units;
+﻿using Ansys.Discovery.Api.V252.Application;
+using Ansys.Discovery.Api.V252.Physics.Conditions;
+using Ansys.Discovery.Api.V252.Physics.Mesh;
+using Ansys.Discovery.Api.V252.Physics.Results;
+using Ansys.Discovery.Api.V252.Solution;
+using Ansys.Discovery.Api.V252.Units;
 using BasicTemplate3.Properties;
-using SpaceClaim.Api.V241;
-using SpaceClaim.Api.V241.Display;
-using SpaceClaim.Api.V241.Extensibility;
-using SpaceClaim.Api.V241.Geometry;
-using SpaceClaim.Api.V241.Modeler;
+using SpaceClaim.Api.V252;
+using SpaceClaim.Api.V252.Extensibility;
+using SpaceClaim.Api.V252.Geometry;
+using SpaceClaim.Api.V252.Modeler;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
-using System.Windows.Forms;
-using Point = SpaceClaim.Api.V241.Geometry.Point;
+using System.Threading.Tasks;
 using ScreenPoint = System.Drawing.Point;
+using Task = System.Threading.Tasks.Task;
 
 namespace BasicTemplate3
 {
@@ -86,7 +87,7 @@ namespace BasicTemplate3
 
             if (selection == null)
             {
-                Notifications.Create(NotificationSeverity.Error, "Nothing selected");
+                Notification.Create(NotificationSeverity.Error, "Nothing selected");
                 return;
             }
 
@@ -101,8 +102,12 @@ namespace BasicTemplate3
     // The Checkmark used to verify a selection
     public class AcceptCapsule : CommandCapsule
     {
+        public static double LASER_RADIUS_m = LengthQuantity.Create(75, LengthUnit.Micrometer).ConvertTo(LengthUnit.Meter).Value;
+        public static double LASER_POWER = 4_000d;  // Watt per laser area
+        public static TimeQuantity SIM_TIME = TimeQuantity.Create(10, TimeUnit.Microsecond);
+
         public const string CommandName = "BasicTemplate3.AcceptOrder";
-        public static CuttingObject staticselectedObject = null;
+        // public static CuttingObject staticselectedObject = null;
 
         public AcceptCapsule()
             : base(CommandName, "Simulate", Resources.OK_32px, "Apply the condition")
@@ -111,7 +116,7 @@ namespace BasicTemplate3
 
         protected override void OnInitialize(Command command)
         {
-
+            // 1,8e-8
         }
 
         protected override void OnExecute(Command command, ExecutionContext context, Rectangle buttonRect)
@@ -120,7 +125,7 @@ namespace BasicTemplate3
 
             if (selection == null)
             {
-                Notifications.Create(NotificationSeverity.Error, "Nothing selected");
+                Notification.Create(NotificationSeverity.Error, "Nothing selected");
                 return;
             }
 
@@ -128,18 +133,103 @@ namespace BasicTemplate3
                 return;
 
             if (!(edge.Shape.Geometry is Circle circle))
-                return;
+                return; // Must be a circle!
 
-            if (!(selection.Parent is DesignBody parentBody))
-                return;
+            DesignBody parentBody = edge.Parent;
+            Part part = parentBody.Parent;
+            var laserStartPoint = edge.Shape.StartPoint;
+            var plane = circle.Plane;
+            var uvPoint = plane.ProjectPoint(laserStartPoint).Param;
+            var circleRadius = circle.Radius;
+            var circleCenter = plane.ProjectPoint(circle.Frame.Origin).Param;
+            var parentFace = parentBody.Faces.First();
+            foreach (var face in parentBody.Faces)
+            {
+                if (!face.Shape.ContainsPoint(laserStartPoint))
+                    continue;
 
-            WriteBlock.ExecuteTask("Create Force", () => {
-                var profile = new Profile(circle.Plane, new List<ITrimmedCurve> { edge.Shape });
-                var extrusion = Body.ExtrudeProfile(profile, 0.002);    // MAGIC NUMBER
-                DesignBody.Create(edge.GetAncestor<Part>(), "extrusion", extrusion);
+                parentFace = face;
+                break;
+            }
 
-                CuttingObject.Create(edge, 1);
-            });
+            // setup visual "laser"
+            var profile = new CircleProfile(
+                plane,
+                LASER_RADIUS_m,
+                uvPoint
+            );
+            var extrusion = Body.ExtrudeProfile(profile, 0.002);    // MAGIC NUMBER
+
+            var laserBody = DesignBody.Create(part, "Laser", extrusion);
+            laserBody.SetColor(null, Color.Red);
+
+            // Since we can't move the laser in the sim, we create a small ring that "simulates"
+            // what it would look like if the laser would cut out the circle
+            var cylinder = DesignBody.Create(
+                part,
+                "Laser_hack",
+                Body.ExtrudeProfile(
+                    new CircleProfile(
+                        plane,
+                        circleRadius + LASER_RADIUS_m
+                    ),
+                    LengthQuantity.Create(0.05, LengthUnit.Millimeter).ConvertTo(LengthUnit.Meter).Value
+                )
+            );
+            var holeInfo = new HoleCreationInfo();
+            holeInfo.HoleDiameter = (circleRadius - LASER_RADIUS_m) * 2;
+            Hole.Create(
+                cylinder.Faces.First(),
+                circle.Frame.Origin,
+                holeInfo
+            );
+            cylinder.SetVisibility(null, false);
+
+
+            // To "simulate" the piece being cut out, we just remove it prior.
+            // I wanted to run the simulation and then remove the body, but the sim does not support that; Thus I remove it in advance
+            holeInfo = new HoleCreationInfo();
+            holeInfo.HoleDiameter = circleRadius * 2;
+            Hole.Create(
+                parentFace,
+                circle.Frame.Origin,
+                holeInfo
+            );
+
+
+            // This is bad, I do not like it.
+            // I am hardcoding which face is which. This might change
+            // in future versions or even with other profiles!
+            var laserFace = cylinder.Faces.First();    // #First is the face that meets the main body
+
+            // Calculate the wattage for the "hack".
+            // Since th laser has 4kW of power for an area of 75µm^2*Pi, we calculate the area
+            // for the face of the cylinder ("hack") and divide that by the area of the laser.
+            // This will give us a ratio of "how many lasers would be in this area" and then multiply that by the 4kW
+            var cylinderWattage = (laserFace.Area / (Math.Pow(LASER_RADIUS_m, 2) * Math.PI)) * LASER_POWER;
+
+            // Setup sim
+            var sim = Simulation.Create();
+            sim.SuppressBody(laserBody, true);    // Otherwise this causes weird effects where the laser body is
+
+            Heat.Create(
+                sim,
+                laserFace,
+                PowerQuantity.Create(cylinderWattage, PowerUnit.Watt)
+            );
+
+            // Contact.Create(sim, laserFace, face, ContactType.Bonded);
+
+            // Use a time-dependent sim with ~10µs, since it provides better sim results
+            sim.SimulationOptions.CalculationType = CalculationType.Transient;  // Sets it to a time-dependent sim
+            sim.SimulationOptions.TimeDependentDuration = SIM_TIME;
+
+            sim.IncludeThermalEffects = true;
+            sim.SuppressedBodies.Clear();   // I do not know why, but sometimes the sim removes/supresses bodies
+            sim.GlobalFidelity.FidelityApproach = GlobalFidelityApproachSetting.Extreme;    // Makes sure all lasers are considered
+            
+            // This is required for the sim to appear in the tree on the side
+            Simulation.SetCurrentSimulation(sim);
         }
 
     }
@@ -156,7 +246,7 @@ namespace BasicTemplate3
                 Window.WindowSelectionChanged += ActiveWindow_SelectionChanged;
                 isToolInitialized = true;
             }
-        }   
+        }
 
         // Make sure that it points the right xml file
         public override string OptionsXml => Resources.SimToolOptions;
@@ -171,12 +261,12 @@ namespace BasicTemplate3
             {
                 CuttingOrder.Command.TextChanged += cuttingOrderCommand_TextChanged;
                 Document.DocumentChanged += TreeField_Updated;
-                this.SelectionTypes = new List<Type> { typeof(IDesignBody) };
+                // this.SelectionTypes = new List<Type> { typeof(IDesignBody) };
             }
             else
             {
                 CustomObjectMagnitude.Command.TextChanged -= cuttingOrderCommand_TextChanged;
-                this.SelectionTypes = new List<Type> { typeof(IDocObject) };    // Reset to normal/default
+                // this.SelectionTypes = new List<Type> { typeof(IDocObject) };    // Reset to normal/default
             }
         }
 
@@ -199,8 +289,10 @@ namespace BasicTemplate3
             var selection = Window.ActiveWindow.ActiveContext.SingleSelection;
             if (selection is ICustomObject)
             {
-                var selectedLoad = CuttingObject.GetWrapper(selection as CustomObject);
+                // var selectedLoad = CuttingObject.GetWrapper(selection as CustomObject);
+                Window.ActiveWindow.SetTool(new SimulationTool());  // REMOVE ME LATER!!!
 
+                /*
                 if (selectedLoad != null)
                 {
                     Window.ActiveWindow.SetTool(new SimulationTool());
@@ -210,15 +302,18 @@ namespace BasicTemplate3
                     AcceptCapsule.staticselectedObject.AccessRendering = setRendering();
                     AcceptCapsule.staticselectedObject.AccessRendering = setRendering();
                 }
+                */
             }
         }
 
         public void cuttingOrderCommand_TextChanged(object sender, CommandTextChangedEventArgs e)
         {
+            /*
             if (AcceptCapsule.staticselectedObject == null)
             {
                 return;
             }
+            */
 
             int newOrder = int.Parse(e.NewValue);
             WriteBlock.ExecuteTask("Change Magnitude", () => ChangeOrder());
@@ -237,7 +332,7 @@ namespace BasicTemplate3
             {
                 if (changedObj is CustomObject customobject)
                 {
-                    var changedLoad = CuttingObject.GetWrapper(changedObj as CustomObject);
+                    // var changedLoad = CuttingObject.GetWrapper(changedObj as CustomObject);
 
                     /*
                     if ((CuttingOrder.Command.Text != changedLoad.TreeFieldQuantity.ToString()))
@@ -250,6 +345,7 @@ namespace BasicTemplate3
             }
         }
 
+        /*
         private void UpdateTreeQuantity(CuttingObject changedLoad)
         {
             // changedLoad.RatioQuantity = RatioQuantity.Create(changedLoad.TreeFieldQuantity.ToString());
@@ -302,9 +398,11 @@ namespace BasicTemplate3
 
             return Graphic.Create(style, null, new[] { shape, preselected, selected });
         }
+        */
 
     }
 
+    /*
     public class CuttingObject : DiscoveryCustomWrapper<CuttingObject>
     {
         private readonly DesignEdge edge;
@@ -397,4 +495,5 @@ namespace BasicTemplate3
         }
 
     }
+    */
 }

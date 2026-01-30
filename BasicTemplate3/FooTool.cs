@@ -1,15 +1,16 @@
 ﻿// Copyright (C) ANSYS.  All Rights Reserved.
 
 
-using Ansys.Discovery.Api.V241.Physics.Conditions;
-using Ansys.Discovery.Api.V241.Physics.Materials;
-using Ansys.Discovery.Api.V241.Physics.Results;
-using Ansys.Discovery.Api.V241.Solution;
-using Ansys.Discovery.Api.V241.Units;
+using Ansys.Discovery.Api.V252.Physics.Conditions;
+using Ansys.Discovery.Api.V252.Physics.Materials;
+using Ansys.Discovery.Api.V252.Physics.Results;
+using Ansys.Discovery.Api.V252.Solution;
+using Ansys.Discovery.Api.V252.Units;
 using BasicTemplate3.Properties;
-using SpaceClaim.Api.V241;
-using SpaceClaim.Api.V241.Extensibility;
-using SpaceClaim.Api.V241.Unsupported.RuledCutting;
+using SpaceClaim.Api.V252;
+using SpaceClaim.Api.V252.Extensibility;
+using SpaceClaim.Api.V252.Geometry;
+using SpaceClaim.Api.V252.Unsupported.RuledCutting;
 using System;
 using System.Drawing;
 using System.Linq;
@@ -107,49 +108,24 @@ namespace BasicTemplate3
 
         protected override void OnExecute(Command command, ExecutionContext context, Rectangle buttonRect)
         {
-            var selected = Window.ActiveWindow.ActiveContext.SingleSelection;
-            if (selected == null)
-                return;
+            var laserBody = Window.ActiveWindow.Document.MainPart.Bodies.Where(b => b.Name.Equals("Laser")).First();
 
-            DesignBody obj = selected.Parent as DesignBody;
-
-            var sim = Simulation.Create();
-            sim.IncludeThermalEffects = true;
-            
-            var topFace = obj.Faces.First();
-            var topHeight = topFace.Shape.AllVertices()
-                .Select(v => v.Position.Z)
-                .Max();
-
-            foreach (var face in obj.Faces)
-            {
-                var height = face.Shape.AllVertices()
-                    .Select(v => v.Position.Z)
-                    .Max();
-
-                if (height > topHeight)
+                WriteBlock.AppendTask(() =>
                 {
-                    topHeight = height;
-                    topFace = face;
-                }
-            }
+                    const int numFrames = 360;
+                    const double stepSize = (2 * Math.PI) / (double)numFrames;
 
-            Heat.Create(
-                sim,
-                topFace,
-                HeatFluxQuantity.Create(4_000, HeatFluxUnit.WattPerSquareMeter)
-            );
+                    for (int i = 0; i < numFrames; i++)
+                    {
+                        laserBody.Transform(
+                               Matrix.CreateTranslation(Vector.Create(0, LengthQuantity.Create(4, LengthUnit.Millimeter).ConvertTo(LengthUnit.Meter).Value, 0))
+                               * Matrix.CreateRotation(Line.Create(SpaceClaim.Api.V252.Geometry.Point.Create(0, 0, 0), Direction.DirY), stepSize * i)
+                               * Matrix.CreateTranslation(Vector.Create(0, -LengthQuantity.Create(4, LengthUnit.Millimeter).ConvertTo(LengthUnit.Meter).Value, 0))
+                           );
+                        System.Threading.Thread.Sleep(200);
+                    }
+                });
 
-            Force.Create(
-                sim,
-                topFace,
-                ForceQuantity.Create(20, ForceUnit.Meganewton)
-            );
-
-            var monitor = Monitor.Create(sim, topFace);
-
-            MaterialAssignment.Create(sim, obj);
-            Simulation.SetCurrentSimulation(sim);
         }
     }
 

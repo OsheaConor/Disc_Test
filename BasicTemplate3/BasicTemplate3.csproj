@@ -51,28 +51,24 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Discovery.Api.V241">
+    <Reference Include="Ansys.Geometry.Api, Version=25.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>$(AWP_ROOT252)\Discovery\Discovery.Api.V241.dll</HintPath>
-      <!-- ANSYS_REVISIONING -->
-      <Private>False</Private>
+      <HintPath>..\..\..\..\..\Program Files\ANSYS Inc\v252\Discovery\Addins\EXP\Ansys.Geometry.Api.dll</HintPath>
     </Reference>
-    <Reference Include="Discovery.Api.V241.UserInterface">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>$(AWP_ROOT252)\Discovery\Discovery.Api.V241.UserInterface.dll</HintPath>
-      <!-- ANSYS_REVISIONING -->
-      <Private>False</Private>
+    <Reference Include="Commands, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7210645d4d5e3a39" />
+    <Reference Include="Discovery.Api.V252">
+      <HintPath>..\..\..\..\..\Program Files\ANSYS Inc\v252\Discovery\Discovery.Api.V252.dll</HintPath>
     </Reference>
-    <Reference Include="SpaceClaim.Api.V241, Version=241.1.0.0, Culture=neutral, PublicKeyToken=7210645d4d5e3a39, processorArchitecture=AMD64">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>$(AWP_ROOT252)\Discovery\SpaceClaim.Api.V241\SpaceClaim.Api.V241.dll</HintPath>
-      <!-- ANSYS_REVISIONING -->
-      <Private>False</Private>
+    <Reference Include="Discovery.Api.V252.UserInterface">
+      <HintPath>..\..\..\..\..\Program Files\ANSYS Inc\v252\Discovery\Discovery.Api.V252.UserInterface.dll</HintPath>
     </Reference>
-    <Reference Include="SpaceClaim.Api.V241.Scripting">
-      <HintPath>..\..\..\..\..\Program Files\ANSYS Inc\v252\Discovery\SpaceClaim.Api.V241\SpaceClaim.Api.V241.Scripting.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="SpaceClaim.Api.V252">
+      <HintPath>..\..\..\..\..\Program Files\ANSYS Inc\v252\Discovery\SpaceClaim.Api.V252\SpaceClaim.Api.V252.dll</HintPath>
     </Reference>
+    <Reference Include="SpaceClaim.Api.V252.Scripting">
+      <HintPath>..\..\..\..\..\Program Files\ANSYS Inc\v252\Discovery\SpaceClaim.Api.V252.Scripting.dll</HintPath>
+    </Reference>
+    <Reference Include="SpaceClaim.Foundation, Version=14.1.0.0, Culture=neutral, PublicKeyToken=7210645d4d5e3a39" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />

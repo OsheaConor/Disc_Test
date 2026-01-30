@@ -20,3 +20,10 @@ C:\Users\osheaco\c_git\Disc_Test\BasicTemplate3\obj\x64\Debug\BasicTemplate3.csp
 C:\Users\osheaco\c_git\Disc_Test\BasicTemplate3\obj\x64\Debug\BasicTemplate3.csproj.CoreCompileInputs.cache
 C:\Users\osheaco\c_git\Disc_Test\BasicTemplate3\obj\x64\Debug\BasicTemplate3.dll
 C:\Users\osheaco\c_git\Disc_Test\BasicTemplate3\obj\x64\Debug\BasicTemplate3.pdb
+C:\Users\osheaco\c_gitstuff\Disc_Test\BasicTemplate3\obj\x64\Debug\BasicTemplate3.csproj.AssemblyReference.cache
+C:\Users\osheaco\c_gitstuff\Disc_Test\BasicTemplate3\obj\x64\Debug\BasicTemplate3.Properties.Resources.resources
+C:\Users\osheaco\c_gitstuff\Disc_Test\BasicTemplate3\obj\x64\Debug\BasicTemplate3.csproj.GenerateResource.cache
+C:\Users\osheaco\c_gitstuff\Disc_Test\BasicTemplate3\obj\x64\Debug\BasicTemplate3.csproj.CoreCompileInputs.cache
+C:\Users\osheaco\c_gitstuff\Disc_Test\BasicTemplate3\obj\x64\Debug\BasicTemplate3.dll
+C:\Users\osheaco\c_gitstuff\Disc_Test\BasicTemplate3\obj\x64\Debug\BasicTemplate3.pdb
+C:\Users\osheaco\c_gitstuff\Disc_Test\BasicTemplate3\obj\x64\Debug\BasicTem.2E0291FA.Up2Date

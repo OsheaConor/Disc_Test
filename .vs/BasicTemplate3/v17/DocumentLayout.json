@@ -1,0 +1,53 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\osheaco\\c_gitstuff\\Disc_Test\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{D3F846FF-C1BF-4673-9613-DFB884B73782}|BasicTemplate3\\BasicTemplate3.csproj|c:\\users\\osheaco\\c_gitstuff\\disc_test\\basictemplate3\\simulationtool.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D3F846FF-C1BF-4673-9613-DFB884B73782}|BasicTemplate3\\BasicTemplate3.csproj|solutionrelative:basictemplate3\\simulationtool.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3F846FF-C1BF-4673-9613-DFB884B73782}|BasicTemplate3\\BasicTemplate3.csproj|C:\\Users\\osheaco\\c_gitstuff\\Disc_Test\\basictemplate3\\footool.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D3F846FF-C1BF-4673-9613-DFB884B73782}|BasicTemplate3\\BasicTemplate3.csproj|solutionrelative:basictemplate3\\footool.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "FooTool.cs",
+              "DocumentMoniker": "C:\\Users\\osheaco\\c_gitstuff\\Disc_Test\\BasicTemplate3\\FooTool.cs",
+              "RelativeDocumentMoniker": "BasicTemplate3\\FooTool.cs",
+              "ToolTip": "C:\\Users\\osheaco\\c_gitstuff\\Disc_Test\\BasicTemplate3\\FooTool.cs",
+              "RelativeToolTip": "BasicTemplate3\\FooTool.cs",
+              "ViewState": "AgIAAGgAAAAAAAAAAAAcwG8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-27T11:54:38.14Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SimulationTool.cs",
+              "DocumentMoniker": "C:\\Users\\osheaco\\c_gitstuff\\Disc_Test\\BasicTemplate3\\SimulationTool.cs",
+              "RelativeDocumentMoniker": "BasicTemplate3\\SimulationTool.cs",
+              "ToolTip": "C:\\Users\\osheaco\\c_gitstuff\\Disc_Test\\BasicTemplate3\\SimulationTool.cs",
+              "RelativeToolTip": "BasicTemplate3\\SimulationTool.cs",
+              "ViewState": "AgIAAMABAAAAAAAAAAAowMkBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-22T12:04:14.422Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

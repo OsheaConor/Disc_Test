@@ -1,10 +1,10 @@
 ﻿// Copyright (C) ANSYS.  All Rights Reserved.
 
 using BasicTemplate3.Properties;
-using SpaceClaim.Api.V241;
-using SpaceClaim.Api.V241.Extensibility;
-using SpaceClaim.Api.V241.Geometry;
-using SpaceClaim.Api.V241.Modeler;
+using SpaceClaim.Api.V252;
+using SpaceClaim.Api.V252.Extensibility;
+using SpaceClaim.Api.V252.Geometry;
+using SpaceClaim.Api.V252.Modeler;
 using System.Drawing;
 
 namespace BasicTemplate3

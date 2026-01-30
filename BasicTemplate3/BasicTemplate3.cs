@@ -1,10 +1,10 @@
 ﻿// Copyright (C) ANSYS.  All Rights Reserved.
 using BasicTemplate3.Properties;
-using SpaceClaim.Api.V241.Extensibility;
+using SpaceClaim.Api.V252.Extensibility;
 using System.ComponentModel.Composition;
 using System.Collections.Generic;
 using System;
-using ITreeHierarchy = Ansys.Discovery.Api.V241.Customization.Tree.ITreeHierarchy;
+using ITreeHierarchy = Ansys.Discovery.Api.V252.Customization.Tree.ITreeHierarchy;
 
 namespace BasicTemplate3
 {
@@ -39,7 +39,7 @@ namespace BasicTemplate3
             }
 
 
-            SpaceClaim.Api.V241.Application.AddSelectionHandler(new CustomBarObjectSelectionHandler());
+            SpaceClaim.Api.V252.Application.AddSelectionHandler(new CustomBarObjectSelectionHandler());
 
         }
 
@@ -61,6 +61,8 @@ namespace BasicTemplate3
     public class BarTreeHierarchy : ITreeHierarchy
     {
         public string Id => "BarObjectsTree";
+
+        public int Index => 0;
 
         public string TreeName => "BarObjectsTree";
 
@@ -101,11 +103,19 @@ namespace BasicTemplate3
 
         public Func<IReadOnlyDictionary<string, object>, IReadOnlyDictionary<string, object>, bool> CanDrop => CanDropOnTarget;
 
+        public Action<IReadOnlyDictionary<string, object>, IReadOnlyDictionary<string, object>> DropCompleted => throw new NotImplementedException();
+
+        public Func<IReadOnlyDictionary<string, object>, string> GetTreeGroup => throw new NotImplementedException();
+
+        public Func<IReadOnlyDictionary<string, object>, string> GetTreeToolTip => throw new NotImplementedException();
+
         private bool CanDropOnTarget(IReadOnlyDictionary<string, object> sourceInfo, IReadOnlyDictionary<string, object> targetInfo)
         {
 
-            return true;
+            return false;
         }
+
+        
     }
 
     /// <summary>
